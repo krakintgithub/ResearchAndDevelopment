@@ -1,0 +1,29 @@
+This is how we will solve the need for a community.
+Have an idea or a suggestion regarding the path the Krakin't should take ?  Write it down/save it, and you will be provided with an online tool so you can evaluate it. All ideas will be kept safe and away from the human eyes (other than yours).
+FUCK IT!  It is going to be : pragma experimental ABIEncoderV2
+Not yet, this is for the database... Ethereum is very limited and does not allow smooth programming. The mining thing will come later after a token release and buttcoin swap.
+If we could hide the contract interactions we would get the perfect token-price ratio by the proof of burning (to mine tokens). BTC mining model would be ideal. Since we can't do it, lets make all data exposed but change the BTC model.
+Finding the perfect model may take some time...
+Early plan:
+
+1. Buttcoins will be swap-able to Krakin't until all minted coins are taken away from the contract.
+
+2. Krakin't will then be mined simply by burning (perhaps later by trading).
+
+3. More we mine, more Krakin'ts will be available for a swap with Buttcoin.
+Of course, this cycle will end, but will be enough to get the things started.
+Just a thought on how to make the Krakin't a free framework at everyone's disposal while being able to earn money from it.
+This is a design that will govern the token, over and over again, code is currently under a development.
+Github for the code tracking and progress following opened at: https://github.com/krakintgithub/  
+
+Parked web-page address under registration. The name "Krakin't" might change, hopefully not!
+
+When does it (not) make sense to decentralize a project incubator with an Ethereum token?
+The Krakin't Token, the project incubator has officially begun. Welcome to the world of decentralization, as the project development is getting warmed up.
+As we transform into another project/product, here are some early glimpses about what it is and what it does:
+https://medium.com/@0xbuttt/the-new-incubator-project-my-answer-to-getting-wrecked-by-xio-12086b699753?sk=fd6cb457a20941318ef2626c42770ee6
+
+Please feel free to come up with a name and a logo. I was thinking about the cracked egg-shell since it is a startup incubator framework.
+
+
+
