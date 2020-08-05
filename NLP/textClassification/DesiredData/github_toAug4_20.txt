@@ -1,0 +1,345 @@
+Krakin't Decentralized Database - Technical Documentation
+Decentralized schemas
+Explanation
+
+In order to keep data regarding the startups, individuals, ideas, ... secure and protected on the block-chain, we need to make a contract that would enable us to add the data onto block-chain. The contract can be called by any interface. There are two kinds of contracts for each data-type. One is regulated.sol other is noadmin.sol. Regulated means that the contract can be adjusted by the project owner or the system administrators. Noadmin means that only the contract owner can add/edit their own data and do nothing else.
+
+Currently, we need to keep everything as the string type (JSON format) since Ethereum does not support multi-dimensional arrays. Furthermore, we can always compress the JSON to make it less expensive. This means that we should keep only the static data on the Ethereum's network. The more dynamic data should be kept elsewhere (centralized or a different technology, other block-chains, etc). Multi-array support is the work in progress while in the meantime we may not need to implement it.
+Code overview for noadmin.sol schemas
+Maps
+
+dataArray Location where all data is stored. Address is the user address followed by the string (which is the name of the schema) followed by the data of a string format. The string (schema) can be any string, indicating that we can have multiple schemas per user's address.
+Functions
+
+getDataValue is a function which returns the data specifying the schema name as the key.
+
+insert is a function which allows us to either add a new or replace the old data in the table. Only the user can write onto their own tables. Preferred format is JSON, compressed.
+Code overview for regulated.sol schemas
+
+Please note, some of the functions contradict the code of conduct (no gate-keeping!). We will make sure to use those functions only when necessary. The main goal is to use noadmin.sol as much as possible.
+Contracts
+
+Administrated This contract is used to allow the administrators to access any of the functions that may be otherwise restricted to anyone else. Furthermore, it contains the flags which tell us whether an account is an administrator or not.
+
+Owned extends Administrated. The standard Owned contract, adjusted to make the (new) owner the administrator.
+
+Maintained extends Owned. This contract is used to keep the track of the accounts, for example, the account with the value 1 has all access restricted and cannot view or alter the data associated with their account. Any other number is to be used with the external applications.
+
+MainAccessControl extends Maintained. We can regulate whether the contract is admin-only or not by flipping the flags.
+
+Schema extends MainAccessControl. The main contract used for storing the data on the Ethereum network.
+Administrated contract
+
+Used for managing the project administrators.
+Maps
+
+admins this map tells us whether the account is an admin (true) or not (false).
+Variables
+
+runAdminConstrOnce public, tells us whether the constructor was initiated, and keeps it locked and safe from hacking.
+Constructor(s)
+
+The main constructor simply sets the contract publisher as the administrator. We are making sure the constructor is initiated only once during a deployment.
+Modifiers
+
+isAdmin the user must be an admin when applied to a function.
+Views
+
+isAdminAccount this view tells us whether the certain 0x account is an admin (true) or not (false).
+Functions
+
+manageAdmins accepts the 0x account as an input and flips the admin status from true to false and/or from false to true. Only admins can run this function.
+Owned contract
+
+Extends the Administrated, inherits variables, maps, modifiers and functions from Administrated. Mainly for allowing the owner-only executions.
+Events
+
+OwnershipTransferred used for transferring the ownership to some other account.
+Variables
+
+owner public, tells us the address of the owner's 0x account. runOwnedConstrOnce public, tells us whether the constructor was initiated, and keeps it locked and safe from hacking.
+Constructor(s)
+
+The main constructor simply sets the owner address. We are making sure the constructor is initiated only once during a deployment.
+Modifiers
+
+isOwner the user must be an owner when applied to a function.
+Views
+
+isAdminAccount this view tells us whether the certain 0x account is an admin (true) or not (false).
+Functions
+
+transferOwnership Transfers the ownership from the current owner to a provided 0x address. Can be executred by the owner only. Sets the new owner as an admin, removes admin privileges of the previous ower. To keep the admin privileges of the previous owner, we must execute the manageAdmins function.
+MainAccessControl contract
+
+Extends the Owned, Administrated, inherits variables, maps, modifiers and functions from Administrated and Owned. This contract is used for managing the user types. If the user-type is 1, it means that it has been banned from the database access and it cannot function with regulated.sol database.
+Variables
+
+getMaintenanceFlagFunction1,getMaintenanceFlagFunction2,getDataValue1,getDataValue2,insert1 public, these are the flags that are used to either allow the public access to main contract functions or to make it an admin-only access.
+Functions
+
+flipGetMaintenanceFlagFunction1,flipGetMaintenanceFlagFunction2,flipGetDataValue1,flipGetDataValue2,flipInsert1 public, owner-only, these functions are used to decide which functions are open to public and which functions are not. This is a very strict regulation of the contract, and therefore, only the owner can execute them (hopefully, never).
+
+setMaintenanceFlag public, Admins-only. Sets the account type onto a provided 0x address. 1 blocks the user completely.
+Views
+
+getMaintenanceFlag public, can be restricted to Admins-only. Not restricted by default. The purpose of this function is to see the maintenance status and an account type for a 0x address. Only the Admins can check the status of someone else's account.
+Schema contract
+
+The main contract to be compiled. Extends the Administrated, Owned, and MainAccessControl. Inherits variables, maps, modifiers and functions from Administrated, Owned, and MainAccessControl. This contract is used to read or insert/replace the data onto block-chain and make it decentralized. Inserted data is of a string type, and therefore the maintenance does cost a lot to perform. All inserts should be JSON. We can apply compression with an encryption too.
+Maps
+
+dataArray public, it maps the user address to the schema name, and schema name to data that is stored. Schema name can be any string we choose.
+Views
+
+getDataValue public, can be set to Admins-only. Is not Admins-only by default. Shows the Schema's data. Only admin accounts can look into other's schemas.
+Functions
+
+insert public, can be set to Admins-only. Is not Admins-only by default. Updates or adds data to a schema. JSON format (can be compressed and/or encrypted) is preferred. Only admins can alter data of another 0x account.
+
+Test cases will be done before the contracts are launched.
+
+Krakin't Technical documentation
+For the future release, currently, Ethereum does not fully support the coded functions
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity >= 0.5 .0 < 0.8 .0;
+
+contract Administrated
+{
+	mapping(address => bool) admins;
+	bool public runAdminConstrOnce = true;
+
+	constructor()
+	{
+		if(runAdminConstrOnce){
+		admins[msg.sender] = true;
+		admins[address(0)] = false;
+		runAdminConstrOnce=false;
+		}
+	}
+
+	modifier isAdmin
+	{
+		require(admins[msg.sender]);
+		_;
+	}
+
+	function manageAdmins(address adminAddress) public isAdmin returns(bool success)
+	{
+		require(adminAddress != address(0));
+		if (!admins[adminAddress])
+		{
+			admins[adminAddress] = true;
+		}
+		else
+		{
+			admins[adminAddress] = false;
+		}
+		return true;
+	}
+	
+	function isAdminAccount(address account) public view returns(bool value)
+	{
+		return admins[account];
+	}
+	
+	
+}
+
+contract Owned is Administrated
+{
+	address public owner;
+	bool public runOwnedConstrOnce = true;
+
+	event  OwnershipTransferred(address indexed _from, address indexed _to);
+
+	constructor()
+	{
+	    if(runOwnedConstrOnce){
+		owner = msg.sender;
+	    runOwnedConstrOnce = false;
+	    }
+	}
+
+	modifier isOwner
+	{
+		require(msg.sender == owner);
+		_;
+	}
+
+	function transferOwnership(address newOwner) public isOwner returns(bool success)
+	{
+		require(newOwner != address(0));
+		if(admins[owner]) manageAdmins(owner);
+		if(!admins[newOwner]) manageAdmins(newOwner);
+		emit OwnershipTransferred(owner, newOwner);
+		owner = newOwner;
+		return true;
+	}
+}
+
+contract Maintained is Owned
+{
+	mapping(address => uint) maintenance;
+
+	modifier maintain(address account)
+	{
+		require(maintenance[account] != 1);
+		require(maintenance[msg.sender] != 1);
+		_;
+	}
+
+	modifier allowAdmins(bool value, address account)
+	{
+		require(value || admins[account]);
+		_;
+	}
+}
+
+contract MainAccessControl is Maintained
+{
+
+	bool public getMaintenanceFlagFunction1 = true;
+	bool public getMaintenanceFlagFunction2 = true;
+	bool public getDataValue1 = true;
+	bool public getDataValue2 = true;
+	bool public insert1 = true;
+
+	function flipGetMaintenanceFlagFunction1() public isAdmin returns(bool success)
+	{
+		getMaintenanceFlagFunction1 = !getMaintenanceFlagFunction1;
+		return true;
+	}
+
+	function flipGetMaintenanceFlagFunction2() public isAdmin returns(bool success)
+	{
+		getMaintenanceFlagFunction2 = !getMaintenanceFlagFunction2;
+		return true;
+	}
+
+	function flipGetDataValue1() public isAdmin returns(bool success)
+	{
+		getDataValue1 = !getDataValue1;
+		return true;
+	}
+
+	function flipGetDataValue2() public isAdmin returns(bool success)
+	{
+		getDataValue2 = !getDataValue2;
+		return true;
+	}
+
+	function flipInsert1() public isAdmin returns(bool success)
+	{
+		insert1 = !insert1;
+		return true;
+	}
+	
+	//--------------Maintenance functions--------------------------------------
+
+	function getMaintenanceFlag() 
+	allowAdmins(getMaintenanceFlagFunction1, msg.sender) public view returns(uint flag)
+	{
+		return maintenance[msg.sender];
+	}
+
+	function getMaintenanceFlag(address account) 
+	allowAdmins(getMaintenanceFlagFunction2, msg.sender) public view returns(uint flag)
+	{
+		return maintenance[account];
+	}
+
+	function setMaintenanceFlag(address account, uint flag) isAdmin public returns(bool success)
+	{
+		maintenance[account] = flag;
+		return true;
+	}
+
+
+}
+
+contract Schema is MainAccessControl
+{
+
+	mapping(address => mapping(string => string)) dataArray;
+
+	//--------------Data Read functions----------------------------------------
+	
+
+	function getDataValue(string memory key)  
+	maintain(msg.sender) allowAdmins(getDataValue1, msg.sender) 
+	public view returns(string memory data)
+	{
+		return dataArray[msg.sender][key];
+	}
+	
+	function getDataValue(address account, string memory key)  
+	maintain(account) allowAdmins(getDataValue2, msg.sender) 
+	public view returns( string memory data)
+	{
+		return dataArray[account][key];
+	}
+
+	//--------------Data Write/Update functions--------------------------------
+	
+	function insert(string memory key, string memory data) 
+	maintain(msg.sender)
+	allowAdmins(insert1, msg.sender)
+	public returns(bool success)
+	{
+		dataArray[msg.sender][key] = data;
+		return true;
+	}
+	
+	function insert(address account, string memory key, string memory data) isAdmin public returns(bool success)
+	{
+		dataArray[account][key] = data;
+		return true;
+	}
+
+}
+
+// SPDX-License-Identifier: MIT
+
+
+//All strings are to be placed as JSON format, to keep the low costs, we can use the gz, bzip2 or deflate to compress.
+//Compress and Decompress is done externally
+
+pragma solidity >= 0.5 .0 < 0.8 .0;
+
+
+contract Schema
+{
+	mapping(address => mapping(string => string)) dataArray;
+
+	//--------------Data Read functions----------------------------------------
+	function getDataValue(string memory key) public view returns(string memory data)
+	{
+		return dataArray[msg.sender][key];
+	}
+
+	//--------------Data Write/Update functions--------------------------------
+	function insert(string memory key, string memory data) public returns(bool success)
+	{
+		dataArray[msg.sender][key] = data;
+		return true;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
