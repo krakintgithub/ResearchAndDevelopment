@@ -1,0 +1,239 @@
+The purpose of this writing is not to throw the FUD but to shine some light on the project called XIO token and the kind of a theft conducted by the person under the name “Zachary Dash”, who should have stayed with the BOMB token instead. Difference between FUD and this writing will be a direct evidence. Should you like to investigate the way XIO project operates, please read as much as possible about the EOS. You will see some striking similarities (and maybe some differences too).
+
+I will not get into any deep speculations regarding the various forms of a theft (theft of ideas, for example), although I do have many, but rather show the evidence against the ways the XIO project is conducted as one of the top 20 holders who got wrecked. Furthermore, I would like to keep this as simple and up to a point as possible.
+
+As you probably know, there is a project called BOMB token. Owners of the BOMB token were airdropped the XIO utility token. BOMB is a social experiment while XIO is a social network token claiming to be much-much more than it actually is…
+
+My ETH address that held approximately 2000 BOMB tokens, while currently holding 62450 old XIO tokens is:
+
+0xda54Fcb4728641112985A7444FE2C6f9A7f4FFCA
+
+The current XIO contract is:
+
+0x0f7f961648ae6db43c75663ac7e5414eb79b5704
+
+The old (unverified) XIO contract is:
+
+0x3205df88cf95b5a702f2b6a1cc10e2075f54387c
+
+BOMB contract is:
+
+0x1C95b093d6C236d3EF7c796fE33f9CC6b8606714
+
+The old XIO token was airdropped on Tuesday, September 10, 2019 to my account. The price of a BOMB token when the swap happened was around $2.00. I have purchased the BOMB much earlier and at the higher price (between $5 to $4 per token). It is possible to time when to airdrop the XIO with the lowest BOMB price as possible, but I do not wish to spend time investigating this possibility. Briefly, if this were ever done, only targeted investors and insiders would profit from it. It is recorded on a chain and if something like that ever happened, it would be easy to track. The reason why I am not investigating this possibility at the moment is simply because it is a low liquidity token, and it would show as the rapid price increase (see the second half of August for BOMB). However, I might do this investigation in the future, should I encounter more evidence.
+
+One of the problems with the tokens is that once it is spread-out in larger chunks, the market becomes bearish. It takes a lot of time to establish the healthy rising prices and the token popularity everyone likes to see. One of the methods to initiate the token is to advertise it doing the airdrops, by spreading the token in large amounts. The problem with airdrops is that token is either not traded or traded only when profitable, resulting in a bearish market. BOMB was very careful about it, and distributed a very small amount as an advertisement, created a hype, and increased the prices. The same strategy was used with the XIO token making just a brief announcement that not many people knew about.
+
+https://medium.com/bombx/xio-token-swap-is-live-instructions-tutorial-d6d27185e077
+
+The swap lasted for about 1 month. Contrary to their claim that it was announced everywhere:
+
+I was OBVIOUSLY not interested…
+
+it was announced on medium.com while only a few websites are actually pointing to it:
+
+https://xio.network/swap/
+
+https://www.reddit.com/r/BOMBX/
+
+https://xord.one/case-study-xio-token-swap/
+
+https://twitter.com/xio_network
+
+Briefly, what happened is that people who followed the hype invested in the BOMB token to get XIO, the BOMB price dropped by half, and people never got their XIO tokens. In other words, everyone who did not spy on the project got half of their money taken away from them. Interestingly enough, this is the exact amount of money I would have if the XIO token were swapped properly (selling at 0.0003588 ETH, while the current price of ETH is $233.15).
+
+Now, let us examine what the XIO token really does, and whether you should invest in the XIO hype and get wrecked again.
+
+The old XIO token has no verified code, and it probably does nothing at all.
+
+The new XIO code can be obtained from here:
+
+https://etherscan.io/address/0x0f7f961648ae6db43c75663ac7e5414eb79b5704#code
+
+So, let us dissect it… Please note, Math, Roles, IERC20, Context, Ownable are the standard functions that are necessary to copy-paste into a contract. These are NOT the functions that are unique to a token. Pauser and Pauser role belong to OpenZepellin project, although not as common, they are still not unique to a token.
+
+These are the standard math functions that were copied:
+
+add, sub, mul, div, mod
+
+The Roles library functions OpenZeppelin contracts:
+
+add, remove, has
+
+Standard IERC20 functions:
+
+totalSupply, balanceOf, transfer, allowance, approve, transferFrom
+
+Ownable functions:
+
+owner, onlyOwner, isOwner, renounceOwnership, transferOwnership
+
+Context functions:
+
+_msgSender, _msgData
+
+Pauser functions:
+
+isPauser, addPauser, removePauser, renouncePauser, _addPauser, _removePauser
+
+Pausable functions:
+
+paused, whenNotPaused, whenPaused, onlyPauser,…
+
+The rest of the code is just the implementation of these functions.
+
+Therefore, as you can see, XIO token DOES NOTHING AT ALL!
+
+It is possible that the implementation of the token can be coded externally, however, I do not see any good way the centralized backend will interact with it. Therefore, any project that uses this token will be centralized, while the token is completely useless.
+
+Please do not fall into these kinds of traps like I did…
+Their reply to all of this ? I am getting blocked on all of their media as soon as I appear.
+
+Personal note: I really wanted to make this a YouTube video, but my wife has warned me not to do it having a plenty of experience with the kind of things people say and do (… on the makeup channels …) when there are no special lights, cameras, editing, microphones, when people have an accent, grammar errors etc. Please be warned, although I wish I could write with an accent, a text below has some grammar errors, since my first language is Serbo-Croatian.
+
+My previous post on the Medium has pointed to some direct evidence how the XIO project got manipulated at the early stages of a development, by not distributing the tokens properly. As mentioned, I was an early investor, in the TOP-20 rank. The estimated damage is from $30K to $500K. Furthermore, I am truly unhappy with the way things have been combined and put together in the name of the community. There is aggressive behaviour (laughing at someone’s face and passive aggression) as well as paid trolling (indicated by providing the ID at the end of each post)… I can’t say that I was perfectly gentle toward them either, but I did not represent the community nor the project. The point is, XIO is a platform that allows the manipulation at the great extent, and it has already demonstrated the manipulative behaviour. However, I can do better than getting directly involved with these kinds of things. Instead, I will start another project, while using the XIO as an example of how the things can be done but also the way the things should not be done. To quote: “The future [truly] is at stake”, but let it be said that it is not my future or the future of anyone I know and stand for.
+
+At the first glance
+
+There is nothing in the XIO’s main contract that tells us how it is different from a simple and a plain token. XIO is not the first project to do this, while investing in such projects means investing into promises and a hype, rather than an actual product. Unfortunately, today, making a truly decentralized project is possible but not economically feasible. This is simply because the computations on Ethereum cost a lot of money. There are other technologies that allow cheaper and better solutions, however, they are not perfect in a design. For example, EOS, although fast and flexible (for developers), the cost of operations is buffered by RAM and it is not truly decentralized. It is a highly-optimized network. Furthermore, just like XIO, it relies on community’s voting system and has proven that this kind of an approach can be manipulated (since the power to vote is implied by the amount of the investment). The best way to deal with this issue is to rely on Ethereum solving the cost problem (which is currently in progress) and develop a decentralized product. Furthermore, Solidity (programming language for developing on Ethereum) is used by multiple block-chains and it can be easily understood translated to other languages - by hand.
+
+Therefore, to make a list, these are the things that MUST be solved:
+
+    At any moment, under any circumstances, there must be NO GATE-KEEPING. Anyone, at any stage of development, must be accepted to incubate their ideas, without sharing or exposing them (unless they want to). Token must have the core functions of the incubator hard-coded to make it a decentralized project and avoid the manipulation.
+    The project (if published on Ethereum) must take a risk and assume that the prices to run the project will become lower in the future. Coding in Solidity is O.K., although I am not sure I like the language, it is currently one of the best approaches.
+    The project must not rely on the community, voting, trolling, group-think and the herd-mentality in order to function. However, it does need the community, and it may be a contradiction I will talk about in the later posts.
+    The token and rewards need to be distributed to the community and people who are making the use of the project, but it has to be independent of the external behaviours, in order to avoid the toxic behaviours (I have a solution, but will talk about it much later as I develop the project).
+
+Deadlocks and what can be done to avoid them
+
+Mainly, the deadlock situation of the XIO (and any other project which is just a token) is Ethereum’s immutability. Immutability means that once the things are coded, they cannot be changed. This is an issue because it does not allow the projects to evolve. There are several solutions to this issue, while some are extremely risky and complicated to deal with. The only way XIO can solve their deadlock situation by making it a simple token is by doing any of the following:
+
+    Make their own block-chain in the future, perhaps with more wrecking and manipulation. In my opinion, this is not necessary since everything can be done on the existing block-chain technologies.
+    Have an external call to a contract, for example, using the web3 connector or another contract. However, this is an insecure approach (the private keys must be exposed to make the internal functions work). Unless all of the tokens were minted and/or the minting function (which is internal) is called by the centralized agent, the token cannot be mined. This simply means that choosing how the rewards are distributed is regulated by the centralized authority (gate-keeping).
+    Make another contract, which implies a lot of delays while re-listing the token to media (exchanges, etc). This can be done, but the trust-rating will be lowered.
+
+Therefore, to add to a list:
+
+5. Token development must start from a scratch, which means, a framework for developing a token, as a token (currently, a work in progress). This needs to be as simple as possible, yet powerful enough for the project to exist and evolve for a very long time.
+
+6. Token distribution must be independent of any authority and TOKEN HAS TO BE MINED!
+
+So what do I mean by 5. and 6. ? Simply, while developing a token, immutability can be indirectly solved by applying the programming design patterns. Nevertheless, this can become very complicated and a big security risk. Instead of finding a general solution, the simple pattern can be developed to accommodate all the needs that one project incubator may have. In that sense, the token becomes a framework, while any potential investors would invest in the token’s ability to attach to different contracts at different times, while relying on a developer never to lose or expose the private key to a contract (nothing new). Since Ethereum is already doing the mining, there is no reason why anyone should apply the same mining ideology on the Ethereum network. This means that all the cell-phone mining and all the electricity wasting is completely useless. Instead, we can develop a way to mine the token without using ANY ELECTRICITY OR HARDWARE (except the internet connection) and we DO NOT NEED ANY POOLS. Last year, someone said on a public forum that I am faking it, while I kept the source-code a secret, shared with only one other developer. Since I did not have time to work on it, I will expose the secret right now, and right here:
+
+CLICK HERE TO SEE THE CODE
+
+You may use this source-code and make your own token. Please let me know if you do, I would like to be the early miner :) Similar logic will be applied, however, it will be simpler and powerful.
+
+There is one more thing I will add to a list of things that have to be done, while it is not the top priority:
+
+7. Incubator, in order to hold a value, needs to have a treasury which can be easily accessed by anyone and be at anyone’s disposal.
+
+I will talk about this much later, but now, I have a lot of work to do.
+
+This is all I will say for now, I got some work to do and make this incubator thing a reality, while surpassing XIO while continuing to expose them for crossing me, and making their own future at stake.
+
+Ethereum is a platform which enables decentralized projects to publish their products, product components, or to simply make the use of any other existing contracts. The power of such networks (and contracts) comes from the network security which enables the user to avoid the need to trust.
+
+Ethereum is already used as the project incubator by allowing the projects to easily issue a token benefiting from the market-cap and liquidity. It is similar to a stock-market by allowing a free-trade of tokens. Therefore, issuing a token like XIO, which has no defined token functions, simply translates everything that Ethereum already does. Other than raising the funds (and possibly dumping the value once enough money is drained), having a project incubator token has no defined meaning or a purpose on Ethereum.
+Image for post
+Image for post
+Most of the Ethereum tokens are “for amusement only”. It is the reason why there are so many useless shitcoins. Buttcoin is the perfect example of an amusement-only shit-coin, created by me. It shows how easy it is to use Ethereum, implement ideas and trade them.
+
+Unfortunately, the only function of such project becomes the control of certain behaviours by the means of manipulation and the gate-keeping. To test this, I will try to list my project incubator idea onto XIO’s network without trolling. The expected result is that it will be ignored, ridiculed, and perhaps censored. Although it may cast some bad light onto the incubator project I am proposing, it will be the great way to learn more while testing the reality of the situation.
+
+The project incubator has to offer something that Ethereum is not offering, by programming it onto Ethereum network. The simplest high-level definition of a project incubator implies (source):
+
+    Help with business basics
+    Networking opportunities
+    Marketing assistance
+    High-speed Internet access
+    Accounting/financial management assistance
+    Access to bank loans, loan funds and guarantee programs
+    Help with presentation skills
+    Connections to higher education resources
+    Connections to strategic partners
+    Access to angel investors or venture capital
+    Comprehensive business training programs
+    Advisory boards and mentors
+    Management team identification
+    Help with business etiquette
+    Technology commercialization assistance
+    Help with regulatory compliance
+    Intellectual property management and legal counsel
+
+The points that we can take from this high-level definition while developing a token are :
+
+    Networking opportunities
+    Project portfolio and management
+    Access to a decentralized treasury (if any)
+    Connections to higher education resources
+    Connections to strategic partners
+    Access to angel investors or venture capital
+    Management team identification
+    Intellectual property management
+    Access to token by the means of creating a Web3 interface (back and front-end)
+    Access to a decentralized market and a token trade
+
+All of these mentioned points can be decentralized by programming a token, while only the points which are formatted as italic do not exist as the feature on the Ethereum block-chain.
+
+The only problem, at the moment, is that adding and re-adjusting the information on the block-chain costs a lot of money. So, for example, it may cost around $5 USD just to add/update general data regarding one single company on the block-chain. Now, to start-off with the project, we would need to add at least 1000 of companies to a block-chain database. The only solution to this problem is to create a general token on the main-network, and simply do all the initial work (coding, adding data etc) on the Ropsten (test) network while revealing the code to the public. The main-network release updates to a decentralized system are done only when it makes sense.
+
+Unfortunately, this means that there has to be a centralized authority, independent of the community, and that it needs to bridge the gap between the real-world and the block-chain by selling/offering the services to a token. This is also something that the mentioned XIO token is trying to do while getting the community involved. However, it does nothing that cannot be done using the web3 interface to Ethereum without a necessity to create a token, other than fund-raising and dumping.
+Manipulated AND not Manipulated does not equal false! — How the inability of Ethereum to support multiple dimensions changes a design
+
+
+
+As Carl Sagan might have said if he were a developer: If you want to make a decentralized platform from the scratch, you should start from building the assembly. The problem of this universe in relation to Ethereum’s assembly is that we currently do not have the multi-dimensional arrays. I never liked the fact that we do not have negative numbers, no doubles, and now, nothing beyond a 1D array (for some types) — a huge WTF !??? How is this thing even supposed to solve complex problems we have today that are trust-related when we cannot even trust Ethereum to be able to solve them ? Well, the only way it can solve the complex problems is if we break them into simpler problems and have a wallet ready to pay for the solution.
+
+Alright, that means just one thing. Back to the drawing board, and do some more hacking just to make the simple and the basic things work. Maps are the data-types that we can use, assuming some maximum number of dimensions (that is, maps of maps of… maps). However, this is not a good approach since we would need to add the 1D data per dimension rather than adding the multi-dimensional data at once (again, the big cost issue).
+
+Good news is that Ethereum crew is currently working on solving this problem and it is in the highly experimental stage of a development. In the meantime, we must rely on the Ethereum’s engineering skills, and create a system that is more flexible. This means, that for each data-type array (that is uint[], string, byte[], bool[], …) we can have a separate contract where we can add and/or change the data like we would using the SQL. Alright, so how do we solve the lack of multi-dimensional arrays? Well, this means adding one more uint variable. 0 means it is a 1 dimensional array. 1 means that each element in array is an array, 2 means that each array has two elements and so on. The problem is that the array growth is exponential and that it really is hard to format it all and make some sense out of it while doing the computations. Therefore, it costs two updates instead of one, while the external agent needs to interpret and format the data. I would rather wait for Ethereum crew to finish their experimental work than complicate it further. Another issue is the data access, but I will not talk about it now.
+
+If we introduce this map and build the logic around it, we have solved half of the problem:
+
+mapping(address => mapping(uint => byte[])) byteDataArray;
+
+If we say that address is the msg.sender (the address that uses the contract) uint is some ID and byte[] is the data we wish to read/write, we can create the logic that is able to allow the contract creator manipulate the data. On the other hand, we can ask the contract not to allow the owner to be able to manipulate the data and keep up with the decentralized ideology.
+
+There are pros and cons to both. For example, imagine the framework sold to someone who becomes the authority with a simple goal in mind: — to destroy the project and make the competitor grow, to everyone else’s disadvantage. In this situation, we do not want the power to manipulate the data. On the other hand, imagine someone supporting the wrong causes that may bring harm to people (human trafficking, and so on…). In that case, we would need the centralized authority to be able to manipulate the data.
+
+Alright, why not have both ! It is very simple. Just create one contract that allows the manipulation and other that does not, while focusing the development in any direction that seems to be the best approach. Both of these contracts can be connected to another contract making the call to either of the other two contracts. In the meantime, we can also wait for the Ethereum engineering crew to start supporting the multiple dimension arrays, and then simply add the next set of contracts that use those arrays. The next problem is, do we just leave the database open for anyone to read/write to it, while focusing only on one or the other type of a database while developing the platform? If we do, it means that anyone can use the token and develop their own malicious platform around it. If we don’t, we are facing the same issue like we did at the very beginning and haven’t solved anything at all. I am leaving it open. It is the solution because if someone wanted to build their own malicious platform, they could just copy-paste the code, do some changes, and make a separate project. Furthermore, as the decentralized coding progresses and becomes more complicated, this issue will become pointless to even talk about.
+
+This is how the need for a decentralized database will be solved, while this approach will be applied developing the final product.
+The most common ETH scam is trying to sell the “Free Ethereum”. The free ETH is basically anything that exists on the test-net, and it doesn’t cost anything to obtain it. The good thing about the test-net is that it can be used the same-way as the real network, except that, Ethereum has no meaning and/or cost. Furthermore, we can expect the test-net to frequently go down and is not stable. However, in my opinion only, it is as decentralized as EOS (although a big under-statement) and we can use its functions in a working product.
+
+Given the expensive costs of computations, I truly doubt that any incubating project has the right means to work directly with the Ethereum main-net. So, the idea is very simple. Anyone who wishes to test the incubator can do so without any costs using the test-net. Anyone who wants to get more serious about their business can transfer their data onto the main-net. However, more data they have on a test-net, more it will cost to make the transfer (sooner they do it, the better). We could also offer the service, for a small fee, to make it a smooth transaction.
+
+Furthermore, any money that is earned can go directly into a treasury for the community to use however they want.
+
+This is just an idea and some thinking I had for today, while this approach will be investigated.
+The proof of bounty does not work, proof of burn (POB) and trade may. Also, BTC model not good for mining by POB on Ethereum.
+
+
+As an anti-thesis to XIO, I have started a new token called Krakin’t (pronounced as Crackin’ it). Briefly, XIO is a token which relies on the bounties and rewards people by getting involved with the community. Their first project was a deflationary token called The Bomb Token, with a purpose to get the community running and engaged. However, something did not work as expected. I have also made two more tokens only to confirm that expecting the community to contribute to a project does not work. To summarize the experience, it all comes down to one point: — If you want something to be done (properly), do it yourself. Therefore, the community will get engaged only if there is work being done or money investment made. As soon as it is stopped, they stop like the project never existed.
+
+While running the ButtCoin token, I have made it 100% independent of the centralized authority (that is, the contract owner). I have also made another token called Hertz token, with the forever-increasing price that is neither a security nor the ponzi-scheme (an ideal investment!). ButtCoin had a plenty of audience, while Hertz did not. For approximately one year, I have simply let the things develop on their own, ignored ButtCoin like I didn’t know about it, and did not get involved with any of the tokens. The result was that simply nobody got involved or did anything at all. The only reason why the price was constantly rising was because Ethereum’s price was rising, while there was no market trade.
+
+The conclusion is, if I want the token to work, I must expect nothing from the community. Community is there to give cheers and likes, watch their small investments (if any) grow. Furthermore, the project does need a central authority and an authority figure to make the project appear like it is heading somewhere, and in the right direction. This is in contradiction with the concept and idea of the decentralization, and is certainly not what the crypto-pioneers stood for. Perhaps this is why many people start off with the YouTube videos, so that people can learn the non-verbal cues, gain the trust and become the followers. This is also one of the reasons why I do not want to make YouTube videos, and run the propaganda machine. Decentralization is about not having to deal with the trust and anyone’s trust issues.
+
+The solution is therefore to either narrow down things to one and a simple bounty or not make any bounty at all. The first idea I had was to make the token mined by people making a transfer from any account to any account. This would work if there weren’t token farms and bots meant to collect the tokens. This happened with the ButtCoin, while by design, ButtCoin rewards 1% to a previous account that made a transfer, so it has left a big-fat trail that cannot be erased by the token-farms. I am happy that ButtCoin was just for fun, because it were a small business, it would have been wrecked and drained from all the money.
+
+Perhaps the simplest solution is to focus on the transfers (transfer-from and transfer-to) between certain accounts only. Those accounts can be address(0) which is used for burning, any address that is used by decentralized exchanges, or by donating a token to a registered project’s address (which may or may not imply the centralized authority and the gate-keeping that I wish to avoid for all costs).
+Image for post
+Image for post
+
+Now, assuming that this is the best and the simplest solution, how will the mining model work? I am not certain about the model. There are a few models coming to my mind (Bancor Network for example), but I do know that BTC model will not work. If we made a betting-game and said that tokens will be distributed according to a burn-ratio per address, it would act as a psychological catalyst and people would burn tokens according to how much they think the burning is worth. However, since all contract interactions with Ethereum are open, this kind of betting would become biased, while the early miners would have the most power to control the project and the token prices. In other words, they would manipulate the project regardless their good intentions. Therefore, BTC model is a good start but it looks like it is missing several variables and a few computations to make it work for Krakin’t.
+
+I will be investigating which mining model to apply or what kind of changes to make to a BTC model, while I hope that I will solve the immutability and be able to release the token, independently, with a limited pre-minted amount that can be swapped with the ButtCoin.
+You have probably heard of the GPT-2 (and maybe even the GPT-3) developed by the OpenAI, a company run by Mr. Elon Musk. Although I still think it is a toy and nothing that will destroy and take over the humanity, it certainly can stay on topic and generate a plenty of amazing bullshit.
+
+That is the reason why I am writing so much. The secret is, I want to create the initial NLP database of what is true/real and what is not. The writings made by GPT-2 are going to fall into a non-desired category while the the writings I made are going to appear in a desired category. After baking it in the oven for about 30min, it will be inserted into a text classifier such as UClassify. The competitors’ writings (for example, REQ) will be placed in a third category.
+
+I will also add this text and make the infinite loop with it, where the classifier will be constantly re-trained with the research data. GTP-2 will be used only as the starting point. I hope that UClassify will be kind enough not to charge me for their services and that I will be able to share this classifier with everyone.
+Image for post
+Image for post
+A.I. will be Krakin’t too !
+
+Any thoughts and ideas that anyone may have regarding the project will be analyzed by the classifier. If it meets the criteria, it will be implemented. If it doesn’t meet the criteria, it will be kept to double-check just in case the classifier learned something new and changed its mind.
+
+So, there you go. The project will be governed by the A.I. and therefore, we have already solved the need for the community to take a lead, which in my opinion, takes forever.
